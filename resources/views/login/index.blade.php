@@ -1,51 +1,47 @@
-@extends('layouts.base')
+@extends('layouts.auth')
 
 @section('page.title', 'Страница входа')
 
-@section('content')
+@section('auth.content')
 
-    <section>
-        <x-container>
-            <div class="row">
-                <div class="col-12 col-md-6 offset-md-3">
-                    <x-card>
-                        <x-card-header>
-                            <x-card-title>
-                                {{ __('Вход') }}
-                            </x-card-title>
-                        </x-card-header>
+    <x-card>
+        <x-card-header>
+            <x-card-title>
+                {{ __('Вход') }}
+            </x-card-title>
 
-                        <x-card-body>
-                            <x-form action="{{ route('login.store')}}" method="POST">
-                                <x-form-item>
-                                    <x-label required>{{ __('Email') }}</x-label>
-                                    <input type="email" name="email" class="form-control" autofocus>
-                                </x-form-item>
+            <x-slot name="right">
+                <a href="{{ route('register') }}">
+                    {{ __('Регистрация') }}
+                </a>
+            </x-slot>
+        </x-card-header>
 
-                                <x-form-item>
-                                    <x-label required>{{ __('Пароль') }}</x-label>
-                                    <input type="password" name="password" class="form-control">
-                                </x-form-item>
+        <x-card-body>
+            <x-form action="{{ route('login.store')}}" method="POST">
 
-                                <x-form-item>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="checkbox" value="1" name="remember" id="remember">
-                                        <label class="form-check-label" for="remember">
-                                            {{ __('Запомнить меня') }}
-                                        </label>
-                                    </div>
-                                </x-form-item>
+                <x-form-item>
+                    <x-label required>{{ __('Email') }}</x-label>
+                    <x-input type="email" name="email" />
+                </x-form-item>
 
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Войти') }}
-                                </button>
+                <x-form-item>
+                    <x-label required>{{ __('Пароль') }}</x-label>
+                    <x-input type="password" name="password" />
+                </x-form-item>
 
-                            </x-form>
-                        </x-card-body>
-                    </x-card>
-                </div>
-            </div>
-        </x-container>
-    </section>
+                <x-form-item>
+                    <x-checkbox name="remember">
+                        {{ __('Запомнить меня') }}
+                    </x-checkbox>
+                </x-form-item>
+
+                <x-button type="submit">
+                    {{ __('Войти') }}
+                </x-button>
+
+            </x-form>
+        </x-card-body>
+    </x-card>
 
 @endsection
