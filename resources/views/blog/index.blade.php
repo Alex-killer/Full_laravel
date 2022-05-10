@@ -10,6 +10,8 @@
 
     </x-title>
 
+    @include('blog.filter')
+
     <div class="row">
         @if(empty($posts))
             {{ __('Нет постов') }}

@@ -8,6 +8,11 @@
 
         {{ __('Мои посты') }}
 
+        <x-slot name="right">
+            <x-button-link href="{{ route('user.posts.create') }}">
+                    {{ __('Создать') }}
+            </x-button-link>
+        </x-slot>
     </x-title>
 
     <div class="row">
@@ -21,10 +26,10 @@
                             {{ $post->title }}
                         </a>
                     </h2>
-                </div>
 
-                <div class="small text-muted">
-                    {{ now()->format('d.m.Y') }}
+                    <div class="small text-muted">
+                        {{ now()->format('d.m.Y') }}
+                    </div>
                 </div>
             @endforeach
         @endif
